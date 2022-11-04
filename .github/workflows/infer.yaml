@@ -5,15 +5,20 @@ on:
     branches:
     - main
 
+permissions:
+      pull-requests: write
+
+
 jobs:
   inference:
     name: infer time to merge
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
-    - uses: actions/first-interaction@v1
+    - name: Echo Something
+      run: X=$RANDOM
+    
+    - name: Write Something in PR
+      uses: actions/first-interaction@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        pr-message: "This is some placeholder text for your TTM prediction"
+        pr-message: "This is some placeholder text for your TTM prediction: ${{ X }}"
