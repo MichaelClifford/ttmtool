@@ -5,21 +5,18 @@ on:
     branches:
     - main
 
-permissions:
-      pull-requests: write
-
-
 jobs:
   inference:
-    name: infer time to merge
     runs-on: ubuntu-latest
-    env:
-      VARIABLE: $RANDOM
-    
-    
-    steps:    
-    - name: Write Something in PR
-      uses: actions/first-interaction@v1
+    steps:
+    - name: one
+      env: 
+        VARIABLE: "hello"
+      run: export VARIABLE=$RANDOM 
+
+    - name: two
+      uses: mshick/add-pr-comment@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        pr-message: "This is some placeholder text for your TTM prediction: $VARIABLE"
+        message: ${{ VARIABLE }}
