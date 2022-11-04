@@ -13,12 +13,13 @@ jobs:
   inference:
     name: infer time to merge
     runs-on: ubuntu-latest
-    steps:
-    - name: Echo Something
-      run: X=$RANDOM
+    env:
+      VARIABLE: $RANDOM
     
+    
+    steps:    
     - name: Write Something in PR
       uses: actions/first-interaction@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        pr-message: "This is some placeholder text for your TTM prediction: ${{ X }}"
+        pr-message: "This is some placeholder text for your TTM prediction: $VARIABLE"
