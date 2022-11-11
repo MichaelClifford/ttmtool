@@ -10,6 +10,6 @@ outputs:
     description: 'Provides a prediction of the PRs time to merge'
 runs:
   using: 'docker'
-  image: '/Dockerfile'
+  image: 'Dockerfile'
   args:
     - ${{ inputs.S3_KEY }}
