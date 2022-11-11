@@ -41,4 +41,3 @@ jobs:
         
       - name: Run Model Inference
         uses: MichaelClifford/ttmtool@v1.1
-
